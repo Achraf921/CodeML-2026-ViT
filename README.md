@@ -48,10 +48,10 @@ I went ahead and built (in the jupyter notebook and the ```vit_vanilla.py``` and
 which consisted of the following steps:
 
 - Convolutional Layer : either our stem CNN/DINOV3 followed by a Conv2d to patchify the inital pixel fomat (huge) dividing by 128 on both H and W
-- Good ole transformer blocks : RoPe positional embeddings -> layer norm -> attention (self, non-causal) -> layer norm -> feed forward ->
-                                                            ^                                            ^ ^                            ^
-                                                            |____________________________________________|_|____________________________|
-                                                                            residual connection                 residual connection
+- Good ole transformer blocks :  -> layer norm -> attention (self, non-causal) -> layer norm -> feed forward ->
+                                  ^                                            ^ ^                            ^
+                                  |____________________________________________|_|____________________________|
+                                                 residual connection                 residual connection
                                                                                             
                                 Repeated 6 times here
 
@@ -79,7 +79,7 @@ As for training we went with a classical AdamW optimizer (EMA based momentum + E
 | warmup_steps | 375 |
 | Feed Forward dimension | 7500 |
 
-Finally due to the shear size of our dataset, I don't think it was a reach to say that I had very little hope in such an implementation actually working 🦧
+Finally due to the shear size of our dataset, I don't think it was a reach to say that I had very little hope in such an implementation actually working, maybe perhaps I should've used a VLM
 
 ## Issues and mistakes :
 
@@ -91,7 +91,7 @@ I found this challenge overly hard because of five main issues:
 5) None of the data being labeled
 3) Maybe is it a skill issue after all ?
 
-In all honesty, I didn't want to go with a vision transformer initially and tried to think of any ways to go around this (Parsing the document, fine-tuning an existing OCR) but both didn't make sense due to issue 4 mainly, which landed me at the default point of building a vision tranformer which failed under issues 1 and 2. Perhaps is it a skill issue ? There might have just been an architecture that could have been leveraged more effectively that would have made more sense that I was not aware of?
+In all honesty, I didn't want to go with a vision transformer initially and tried to think of any ways to go around this (Parsing the document, fine-tuning an existing OCR) but both didn't make sense due to issue 4 mainly, which landed me at the default point of building a vision tranformer which failed under issues 1 and 2. ? Maybe a VLM could have been leveraged more efficiently ?
 
 Moreover, I should also mention that assuming the role of leadership in a team with more unexperienced members is something I liked doing, and providing decision making as well as being the pushing force of the team is something I liked to experiment, but nonetheless, maybe a more efficient team that may be more experienced with ML/Data science (the task I gave out to the other team members was for them to understand best and parse the plan format, and potentially cleanse them of any nans/bogus/irrelevant data, but that never yielded unfortunately 🦧) would have helped.
 
@@ -104,7 +104,6 @@ Though I don't like to publish L's (this won't see linkedin lol), I still think 
 3) Experimenting with forking my own model and comparing both forks
 4) Experimenting with leadership and team leading in ML context
 
-to be fully honest, spending the weekend on something that did not deliver and leaving still not knowing how to solve it/if it is even solvable was not really a good feeling, but at least I didn't give up and kept trying to do my best with whatever I know about ML, which I think is a very useful trait to have, as sometimes, being perseverant against a problem that seems to keep throwing jabs at you does end up in success, at least I didn't bitch
-
+to be fully honest, spending the weekend on something that did not deliver and leaving still not knowing how to solve it/if it is even solvable was not really a good feeling, but at least I didn't give up and kept trying to do my best with whatever I know about ML, which I think is a very useful trait to have, as sometimes, being perseverant against a problem that seems to keep throwing jabs at you does end up in success
 
                                 
